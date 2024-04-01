@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  tengine:
+    container_name: tengine
+    image: axizdkr/tengine
+    ports:
+      - "81:80"
+      - "442:443"
+    volumes:
+      - ./.htpasswd:/www/tvbox/cat/.htpasswd
+      - ./xiaoya-cattv.conf:/etc/nginx/conf.d/xiaoya-cattv.conf
+
