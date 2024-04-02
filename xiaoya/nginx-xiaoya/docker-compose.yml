@@ -1,0 +1,19 @@
+version: "3"
+services:
+  nginx:
+    image: nginx:alpine
+    entrypoint: /opt/entry.sh
+    container_name: nginx
+    ports:
+      - 8095:2345
+    volumes:
+      - ./nginx/entry.sh:/opt/entry.sh
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/embyCache:/var/cache/nginx/emby
+    environment:
+      # emby地址
+      - EMBY_ADDRESS=http://nas.wuweijun125.top:6908
+      # xiaoya地址
+      - ALIST_API=http://nas.wuweijun125.top:5678
+    restart: always
