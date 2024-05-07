@@ -9,16 +9,26 @@ from cachetools import TTLCache
 app = FastAPI()
 
 # JSON 文件的 URL
-json_url = "https://raw.githubusercontent.com/zkeq/Bing-Wallpaper-Action/main/data/zh-CN_all.json"
+json_urls = [
+    "https://raw.githubusercontent.com/zkeq/Bing-Wallpaper-Action/main/data/de-DE_all.json",
+    "https://raw.githubusercontent.com/zkeq/Bing-Wallpaper-Action/main/data/en-CA_all.json",
+    "https://raw.githubusercontent.com/zkeq/Bing-Wallpaper-Action/main/data/en-GB_all.json",
+    "https://raw.githubusercontent.com/zkeq/Bing-Wallpaper-Action/main/data/en-US_all.json",
+    "https://raw.githubusercontent.com/zkeq/Bing-Wallpaper-Action/main/data/en-IN_all.json",
+    "https://raw.githubusercontent.com/zkeq/Bing-Wallpaper-Action/main/data/fr-FR_all.json",
+    "https://raw.githubusercontent.com/zkeq/Bing-Wallpaper-Action/main/data/it-IT_all.json",
+    "https://raw.githubusercontent.com/zkeq/Bing-Wallpaper-Action/main/data/ja-JP_all.json"
+]
 
 # 创建一个 TTL 缓存，设置过期时间为 300 秒
 json_cache = TTLCache(maxsize=1, ttl=300)
 
 def fetch_json_data():
     try:
-        response = requests.get(json_url)
+        jsonurl = random.choice(json_urls)
+        print(jsonurl)
+        response = requests.get(jsonurl)
         json_data = response.json()
-        print("request json success")
         return json_data
     except Exception as e:
         print("Error fetching JSON data:", e)
