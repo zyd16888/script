@@ -1,4 +1,5 @@
 import datetime
+import datetime
 from time import sleep
 import requests
 import re
@@ -54,6 +55,7 @@ def get_server_url(name, url, xpath):
             package_qty = re.search(r'\d+', package_qty_text).group()
 
             if index < 5 :
+            if index < 5 :
                 print("Package Name:", package_name)
                 print("Package Quantity:", package_qty)
                 print("-" * 20)
@@ -72,5 +74,6 @@ for key, value in block_storage.items():
     sleep(1)
 
 if sendmsg:
+    message += timenow
     message += timenow
     send("buyvm 补货提醒", message)
