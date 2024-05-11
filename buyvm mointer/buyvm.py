@@ -1,8 +1,13 @@
+import datetime
 from time import sleep
 import requests
 import re
 from lxml import html
 from sendNotify import send
+
+# 打印当前时间
+timenow = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+print("当前时间：" + timenow)
 
 # 发起 HTTP 请求
 url = "https://my.frantech.ca/cart.php?gid=46"
@@ -48,7 +53,7 @@ def get_server_url(name, url, xpath):
             # 使用正则表达式提取数字部分
             package_qty = re.search(r'\d+', package_qty_text).group()
 
-            if index < 3 :
+            if index < 5 :
                 print("Package Name:", package_name)
                 print("Package Quantity:", package_qty)
                 print("-" * 20)
@@ -67,4 +72,5 @@ for key, value in block_storage.items():
     sleep(1)
 
 if sendmsg:
+    message += timenow
     send("buyvm 补货提醒", message)
