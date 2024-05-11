@@ -55,7 +55,6 @@ def get_server_url(name, url, xpath):
             package_qty = re.search(r'\d+', package_qty_text).group()
 
             if index < 5 :
-            if index < 5 :
                 print("Package Name:", package_name)
                 print("Package Quantity:", package_qty)
                 print("-" * 20)
