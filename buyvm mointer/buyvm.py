@@ -58,8 +58,8 @@ def get_server_url(name, url, xpath):
                 print("Package Name:", package_name)
                 print("Package Quantity:", package_qty)
                 print("-" * 20)
-                sendmsg = True
                 if int(package_qty) > 0:
+                    sendmsg = True
                     message += f"{name} : {package_name}, 数量: {package_qty} \n"
     else:
         print("Failed to fetch the page")
@@ -73,6 +73,5 @@ for key, value in block_storage.items():
     sleep(1)
 
 if sendmsg:
-    message += timenow
     message += timenow
     send("buyvm 补货提醒", message)
