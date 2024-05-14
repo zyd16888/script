@@ -5,34 +5,67 @@ import requests
 import re
 from lxml import html
 from sendNotify import send
+import schedule
 
-# 打印当前时间
-timenow = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-print("当前时间：" + timenow)
 
-# 发起 HTTP 请求
-url = "https://my.frantech.ca/cart.php?gid=46"
-server_urls = {
-    "拉斯维加斯":"https://my.frantech.ca/cart.php?gid=37",
-    "纽约":"https://my.frantech.ca/cart.php?gid=38",
-    "迈阿密":"https://my.frantech.ca/cart.php?gid=48",
-    "卢森堡":"https://my.frantech.ca/cart.php?gid=39"
-}
 
-block_storage = {
-    "拉斯维加斯":"https://my.frantech.ca/cart.php?gid=42",
-    "纽约":"https://my.frantech.ca/cart.php?gid=45",
-    "迈阿密":"https://my.frantech.ca/cart.php?gid=49",
-    "卢森堡":"https://my.frantech.ca/cart.php?gid=46"
-}
+# Function to save current results to file
+def save_results_to_file(results):
+    with open("previous_results.txt", "w") as file:
+        file.write(results)
 
-message = ""
-sendmsg = False
+def run_task():
+    # 打印当前时间
+    timenow = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    print("当前时间：" + timenow)
+    message = ""
+
+    # Load previous results from file
+    try:
+        with open("previous_results.txt", "r") as file:
+            previous_results = file.read()
+    except FileNotFoundError:
+        previous_results = ""
+
+    # 发起 HTTP 请求
+    url = "https://my.frantech.ca/cart.php?gid=46"
+    server_urls = {
+        "拉斯维加斯":"https://my.frantech.ca/cart.php?gid=37",
+        "纽约":"https://my.frantech.ca/cart.php?gid=38",
+        "迈阿密":"https://my.frantech.ca/cart.php?gid=48",
+        "卢森堡":"https://my.frantech.ca/cart.php?gid=39"
+    }
+
+    block_storage = {
+        "拉斯维加斯":"https://my.frantech.ca/cart.php?gid=42",
+        "纽约":"https://my.frantech.ca/cart.php?gid=45",
+        "迈阿密":"https://my.frantech.ca/cart.php?gid=49",
+        "卢森堡":"https://my.frantech.ca/cart.php?gid=46"
+    }
+
+    
+    for key, value in server_urls.items():
+        current_results = get_server_url(key, value, "//*[@class='package ']")
+        message += current_results
+        sleep(1)
+
+    for key, value in block_storage.items():
+        current_results = get_server_url(key, value, "//*[@class='package package-featured']")
+        message += current_results
+        sleep(1)
+    
+    if message != previous_results:
+        save_results_to_file(message)
+        message += timenow
+        send("buyvm 补货提醒", message)
+        
+
 def get_server_url(name, url, xpath):
-    global message  # Add this line to access the global variable 'message' within the function
-    global sendmsg  # Also add this line to access the global variable 'sendmsg'
+    # global message  # Add this line to access the global variable 'message' within the function
+    # global sendmsg  # Also add this line to access the global variable 'sendmsg'
 
     response = requests.get(url)
+    current_results = ""
 
     # 检查响应状态码
     if response.status_code == 200:
@@ -59,19 +92,17 @@ def get_server_url(name, url, xpath):
                 print("Package Quantity:", package_qty)
                 print("-" * 20)
                 if int(package_qty) > 0:
-                    sendmsg = True
-                    message += f"{name} : {package_name}, 数量: {package_qty} \n"
+                    # sendmsg = True
+                    # message += f"{name} : {package_name}, 数量: {package_qty} \n"
+                    current_results += f"{name} : {package_name}, 数量: {package_qty} \n"
     else:
         print("Failed to fetch the page")
+    return current_results
 
-for key, value in server_urls.items():
-    get_server_url(key, value, "//*[@class='package ']")
+# Schedule the task to run every hour
+schedule.every(3).minutes.do(run_task)
+
+# Infinite loop to keep the script running
+while True:
+    schedule.run_pending()
     sleep(1)
-
-for key, value in block_storage.items():
-    get_server_url(key, value, "//*[@class='package package-featured']")
-    sleep(1)
-
-if sendmsg:
-    message += timenow
-    send("buyvm 补货提醒", message)
