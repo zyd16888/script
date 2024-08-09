@@ -1,0 +1,14 @@
+zhuanlisqh  申请号/专利号
+zhuanlimc  发明名称
+shenqingrxm  申请人
+zhuanlilx  专利类型 （1: 发明专利, 2:实用新型, 3: 外观设计）
+shenqingr  申请日
+famingzlsqgbg  发明专利申请公布号
+shouquanggh  授权公告
+gongkaiggh
+falvzt  法律状态
+gongkaiggr  授权公告日
+shouquanggr
+zhufenlh  主分类号
+anjianywzt  案件状态
+attention  
