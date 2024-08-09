@@ -1,0 +1,12 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\mpv]
+@="URL:MPV Protocol"
+"URL Protocol"=""
+
+[HKEY_CLASSES_ROOT\mpv\shell]
+
+[HKEY_CLASSES_ROOT\mpv\shell\open]
+
+[HKEY_CLASSES_ROOT\mpv\shell\open\command]
+@="\"D:\\Program Files\\mpvnet\\mpvnet.exe\" \"%1\""
