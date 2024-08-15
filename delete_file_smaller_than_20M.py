@@ -13,7 +13,7 @@ for subdir, dirs, files in os.walk(videos_dir):
         # print(file_path)
 
         # 检查视频文件大小是否小于20M
-        if os.path.getsize(file_path) < 30 * 1024 * 1024:
+        if os.path.getsize(file_path) < file_size:
             # 删除小于20M的视频文件
             os.remove(file_path)
             print(f"Deleted file: {file_path}")
