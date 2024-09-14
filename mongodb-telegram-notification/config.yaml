@@ -1,0 +1,12 @@
+# MongoDB连接设置
+mongo_uri: "mongodb+srv://readonly:cS9NSuiJ1ebHnUL0@cluster0.8mosa.mongodb.net/Cluster0?retryWrites=true&w=majority"
+database_name: "sehuatang"
+collection_name: "asia_mosaic_originate"
+
+# Telegram Bot设置
+telegram_bot_token: "***************************************"
+chat_id: -1*************
+
+# 其他设置
+keep_days: 7
+image_proxy_url: "https://sht-img.790366.xyz"
