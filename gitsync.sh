@@ -10,6 +10,8 @@ REPOS=(
     "https://github.com/Meroser/IPTV.git"
     "https://github.com/qist/tvbox.git"
     "https://github.com/xiaolinshao/linshao.git"
+    "https://github.com/wangger98/TVbox18.git"
+    "https://github.com/sqspot/tac.git"
 )
 
 # 设置存储库别名
@@ -22,6 +24,8 @@ REPO_ALIASES["https://github.com/gaotianliuyun/gao.git"]="gao-iptv"
 REPO_ALIASES["https://github.com/Meroser/IPTV.git"]="meroser-iptv"
 REPO_ALIASES["https://github.com/qist/tvbox.git"]="qist-tvbox"
 REPO_ALIASES["https://github.com/xiaolinshao/linshao.git"]="linshao"
+REPO_ALIASES["https://github.com/wangger98/TVbox18.git"]="wangger98-tvbox18"
+REPO_ALIASES["https://github.com/sqspot/tac.git"]="sqspot-tac"
 
 # 本地存储目录
 BASE_DIR="/root/syncGitUpx/git_repos"
@@ -39,6 +43,8 @@ REMOTE_PATHS["gao-iptv"]="/gao/"
 REMOTE_PATHS["meroser-iptv"]="/Meroser-IPTV/"
 REMOTE_PATHS["qist-tvbox"]="/qist-tvbox/"
 REMOTE_PATHS["linshao"]="/linshao/"
+REMOTE_PATHS["wangger98-tvbox18"]="/wangger98-tvbox18/"
+REMOTE_PATHS["sqspot-tac"]="/sqspot-tac/"
 
 # UPX 认证信息
 UPX_AUTH="wYj9DMjVEgnVBMzPzYiSiNP4zciSiNP4zde4mJeXndeYmYjD"
