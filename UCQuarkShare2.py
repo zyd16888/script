@@ -132,10 +132,10 @@ class QuarkShare(BaseShare):
 if __name__ == "__main__":
     quark_ck = "<夸克网盘 cookie中的__pus>"
     quark_dir = "<转存的父文件夹id(自己网盘的文件夹id，会转存到这个目录)>"
-    QuarkShare("6b81947519d0").root.list()
+    QuarkShare("540b69179b47").root.list()
     # 保存
-    quark = QuarkShare("6b81947519d0")
-    quark.root.list()[0].savelist(quark_ck, quark_dir, quark.root.list())
+    # quark = QuarkShare("6b81947519d0")
+    # quark.root.list()[0].savelist(quark_ck, quark_dir, quark.root.list())
 
     # QuarkShare("6b81947519d0").root.list()[91].save(quark_ck, quark_dir)
     # uc_ck = '<uc网盘 cookie中的__pus>'
