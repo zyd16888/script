@@ -1,0 +1,48 @@
+{
+    "urls": [
+        {
+            "url": "./gao/0821.json",
+            "name": "高天流云 No.1"
+        },
+        {
+            "url": "./gao/0822.json",
+            "name": "高天流云 精简版"
+        },
+        {
+            "url": "./gao/js.json",
+            "name": "道长drpy(js)仓库"
+        },
+        {
+            "url": "./gao/XYQ.json",
+            "name": "高天流云 香雅情"
+        },
+        {
+            "url": "./qist-tvbox/js.json",
+            "name": "来自js.json"
+        },
+        {
+            "url": "./qist-tvbox/jsm.json",
+            "name": "来自js.json 0826.json 合集"
+        },
+        {
+            "url": "./qist-tvbox/xiaosa/api.json",
+            "name": "潇洒哥的api"
+        },
+        {
+            "url": "./qist-tvbox/dianshi.json",
+            "name": "来自dianshi.json"
+        },
+        {
+            "url": "./linshao/1.json",
+            "name": "linshao"
+        },
+        {
+            "url": "./gao/0826.json",
+            "name": "高天流云 饭太硬"
+        },
+        {
+            "url": "./gao/0827.json",
+            "name": "高天流云 FM"
+        }
+    ]
+}

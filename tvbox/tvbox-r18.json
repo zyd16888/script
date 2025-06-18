@@ -1,0 +1,36 @@
+{
+    "urls": [
+        {
+            "url": "./sqspot-tac/18.js",
+            "name": "sqspot-tac 18.js"
+        },
+        {
+            "url": "./linshao/18.json",
+            "name": "linshao 18"
+        },
+        {
+            "url": "./qist-tvbox/9918.json",
+            "name": "qist 9918"
+        },
+        {
+            "url": "./wangger98-tvbox18/%E5%A4%A7%E7%A5%9E.json",
+            "name": "qist 99188"
+        },
+        {
+            "url": "./r18/18.json",
+            "name": "18"
+        },
+        {
+            "url": "./r18/18-4.json",
+            "name": "18-4"
+        },
+        {
+            "url": "./r18/18-5.json",
+            "name": "18-5"
+        },
+        {
+            "url": "./r18/18-6.json",
+            "name": "18-6"
+        }
+    ]
+}
